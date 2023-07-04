@@ -21,3 +21,7 @@ export async function getFeaturedPosts() {
   const data = await getAllPosts();
   return data.filter((post) => post.featured);
 }
+export async function getNonFeaturedPosts() {
+  const data = await getAllPosts();
+  return data.filter((post) => !post.featured);
+}
