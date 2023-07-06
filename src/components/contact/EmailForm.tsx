@@ -15,8 +15,9 @@ export type ContactBanner = {
 
 const LABLE_CLASS = "font-bold text-white";
 const INPUT_CLASS = "px-2";
+const DEFAULT_FORM = { from: "", subject: "", message: "" };
 export default function EmailForm() {
-  const [form, setForm] = useState<ContactEmailForm>({ from: "", subject: "", message: "" });
+  const [form, setForm] = useState<ContactEmailForm>(DEFAULT_FORM);
   const [banner, setBanner] = useState<ContactBanner | null>(null);
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -25,7 +26,10 @@ export default function EmailForm() {
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     sendContactEmail(form)
-      .then(() => setBanner({ message: "메일 전송 성공!", state: "success" }))
+      .then(() => {
+        setBanner({ message: "메일 전송 성공!", state: "success" });
+        setForm(DEFAULT_FORM);
+      })
       .catch((e) => {
         console.log(e);
         return setBanner({ message: "메일 전송 실패!", state: "error" });
