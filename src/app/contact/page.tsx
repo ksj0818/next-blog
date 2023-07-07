@@ -1,5 +1,11 @@
 import EmailForm from "@/components/contact/EmailForm";
+import { Metadata } from "next";
 import { AiFillGithub, AiFillGoogleCircle, AiFillFacebook } from "react-icons/ai";
+
+export const metadata: Metadata = {
+  title: "Contact Me",
+  description: "Kim에게 메일 보내기",
+};
 
 const LINKS = [
   {

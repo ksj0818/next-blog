@@ -6,8 +6,14 @@ import Footer from "@/components/common/Footer";
 const lora = Lora({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "포스트 블로그",
+  title: {
+    default: "포스트 블로그",
+    template: "포스트 블로그 | %s",
+  },
   description: "Next v13 버전 연습 ",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
