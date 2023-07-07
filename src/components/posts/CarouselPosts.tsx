@@ -8,7 +8,7 @@ export default async function CarouselPosts() {
   return (
     <MultiCarousel>
       {posts.map((post) => (
-        <PostsCard post={post} />
+        <PostsCard post={post} key={post.path} />
       ))}
     </MultiCarousel>
   );
