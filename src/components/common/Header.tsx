@@ -10,7 +10,7 @@ export default function Header() {
       </Link>
       <div className="flex gap-4">
         {LINKS.map((link, index) => (
-          <Link href={link.toLowerCase()} key={index} className="text-lg font-bold hover:underline">
+          <Link href={`/${link.toLowerCase()}`} key={index} className="text-lg font-bold hover:underline">
             {link}
           </Link>
         ))}
