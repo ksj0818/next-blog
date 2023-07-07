@@ -1,6 +1,6 @@
 import MarkdownViewer from "@/components/common/MarkdownViewer";
 import MovePosts from "@/components/posts/MovePosts";
-import { getPostData } from "@/service/posts";
+import { getFeaturedPosts, getPostData } from "@/service/posts";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -35,4 +35,11 @@ export default async function PostPage({ params: { slug } }: { params: { slug: s
       </div>
     </article>
   );
+}
+
+export async function generateStaticParams() {
+  const posts = await getFeaturedPosts();
+  return posts.map((post) => ({
+    slug: post.path,
+  }));
 }
