@@ -1,7 +1,8 @@
-import Header from "@/components/common/Header";
+"use client";
 import "./globals.css";
 import { Lora } from "next/font/google";
-import Footer from "@/components/common/Footer";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 const lora = Lora({ subsets: ["latin"] });
 
@@ -16,13 +17,17 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout() {
+  const router = useRouter();
+  useEffect(() => {
+    router.push("https://nextking-portfolio.vercel.app/");
+  }, []);
   return (
     <html lang="en" className={lora.className}>
       <body className="flex flex-col w-full max-w-4xl mx-auto">
-        <Header />
+        {/* <Header />
         <main className="grow">{children}</main>
-        <Footer />
+        <Footer /> */}
       </body>
     </html>
   );
